@@ -1,15 +1,13 @@
 import React, { useState } from "react";
+import Login from "./pages/login";
+import './assets/css/login.css'
+import './assets/css/menu.css'
 
 function App() {
 
-state = { 
-  nome: 'Union'
-}
-
   return (
     <div>
-      <label>Nome: </label>
-      <input type="text" value={this.state.nome} />
+      <Login />
     </div>
   );
 }
