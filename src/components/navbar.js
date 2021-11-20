@@ -2,7 +2,7 @@ import React from "react";
 
 import NavbarItem from "./navbaritem";
 
-const Navbar = () => {
+const Navbar = (props) => {
 
     return (
         <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
@@ -22,9 +22,12 @@ const Navbar = () => {
                         {/* <NavbarItem render={props.isUsuarioAutenticado} href="#/home" label="Home" />
                         <NavbarItem render={props.isUsuarioAutenticado} href="#/cadastro-usuarios" label="Usuários" />
                         <NavbarItem render={props.isUsuarioAutenticado} href="#/consulta-lancamentos" label="Lançamentos" /> */}
-                    </ul>
-                    <ul className="navbar-nav exit" style={{ float: 'right' }}>
+                        <NavbarItem href="#/home" label="Home" />
+                        <NavbarItem href="#/cadastro-usuarios" label="Usuários" />
+                        <NavbarItem href="#/consulta-lancamentos" label="Lançamentos" />
+                        {/* <ul className="navbar-nav exit" style={{ float: 'right' }}> */}
                         {/* <NavbarItem render={props.isUsuarioAutenticado} onClick={props.deslogar} href="#/login" label="Sair" /> */}
+                        <NavbarItem onClick={props.deslogar} href="#/login" label="Sair" />
                     </ul>
                 </div>
             </div>

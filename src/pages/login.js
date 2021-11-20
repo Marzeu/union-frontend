@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
-import Card from "../components/card";
-import FormGroup from "../components/form-group";
+import Card from '../components/card';
+import FormGroup from '../components/form-group';
 
 class Login extends React.Component {
 
