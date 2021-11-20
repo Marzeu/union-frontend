@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Login from "./pages/login";
+import Rotas from "./routes/rotas";
 // import './assets/css/login.css';
 // import './assets/css/menu.css';
 import 'bootswatch/dist/flatly/bootstrap.css'
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <Login />
+      <Rotas />
     </div>
   );
 }
