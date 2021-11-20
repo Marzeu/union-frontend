@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, HashRouter } from 'react-router-dom';
+import { Route, Switch, HashRouter } from 'react-router-dom';
 
 import CadastroUsuario from "../pages/cadastroUsuario";
 import Login from "../pages/login";
@@ -7,10 +7,10 @@ import Login from "../pages/login";
 const Rotas = () => {
     return (
         <HashRouter>
-            <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/cadastro-usuario" element={<CadastroUsuario />} />
-            </Routes>
+            <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/cadastro-usuario" component={CadastroUsuario} />
+            </Switch>
         </HashRouter>
     );
 }

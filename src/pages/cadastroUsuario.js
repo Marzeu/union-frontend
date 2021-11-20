@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { withRouter } from 'react-router-dom'
 import Card from '../components/card';
 import FormGroup from '../components/form-group';
 
@@ -121,4 +122,4 @@ class CadastroUsuario extends React.Component {
     }
 }
 
-export default CadastroUsuario;
+export default withRouter (CadastroUsuario);
