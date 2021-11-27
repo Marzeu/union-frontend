@@ -1,7 +1,10 @@
 import React from 'react';
+import Card from '../components/card';
+import FormGroup from '../components/form-group';
 import { withRouter } from 'react-router';
 
-import axios from 'axios';
+import CoordenadorService from '../service/coordenadorService';
+import LocalStorageService from '../service/localstorageService';
 
 import Card from '../components/card';
 import FormGroup from '../components/form-group';
@@ -15,18 +18,20 @@ class Login extends React.Component {
 
     constructor() {
         super();
+        this.coordenadorService = new CoordenadorService();
     }
 
-    entrar = async () => {
-        axios.post('http://localhost:8080/api/coordenador/autenticar', {
+    entrar = () => {
+        this.coordenadorService.autenticar({
             email: this.state.email,
             senha: this.state.senha
-        }).then(res => {
-            localStorage.setItem('_usuario_logado', JSON.stringify(res.data));
+        })  
+        .then(res => {
+            LocalStorageService.adicionarItem('_coordenador_logado', res.data);
             this.props.history.push('/home');
             console.log(res);
         }).catch(err => {
-            console.log(err.response);
+            this.setState({ mensagemErro: err.res.data});
         })
     }
 

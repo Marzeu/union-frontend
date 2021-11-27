@@ -1,23 +1,28 @@
 import React from 'react';
-import axios from 'axios';
+import CoordenadorService from '../service/coordenadorService';
+import LocalStorageService from '../service/localstorageService';
 
 class Home extends React.Component {
 
-    state = {
-        saldo: 0
+    // state = {
+    //     saldo: 0
+    // }
+
+    constructor(){
+        super();
+        this.coordenadorService = new CoordenadorService();
     }
 
-    componentDidMount() {
-        const usuarioLogadoString = localStorage.getItem('_usuario_logado');
-        const usuarioLogado = JSON.parse(usuarioLogadoString);
+    componentDidMount() {        
+        const usuarioLogado = LocalStorageService.obterItem('_coordenador_logado');
 
-
-        axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}saldo`)
-            .then(res => {
-                this.setState({ saldo: res.data });
-            }).catch(err => {
-                console.log(err.res);
-            });
+        // this.coordenadorService desnecessario
+        // axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}saldo`)
+        //     .then(res => {
+        //         this.setState({ saldo: res.data });
+        //     }).catch(err => {
+        //         console.log(err.res);
+        //     });
 
 
     }
