@@ -1,6 +1,6 @@
 import React from 'react';
 import CoordenadorService from '../app/service/coordenadorService';
-import LocalStorageService from '../app/service/localstorageService';
+//import LocalStorageService from '../app/service/localstorageService';
 
 class Home extends React.Component {
 
@@ -14,7 +14,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        const usuarioLogado = LocalStorageService.obterItem('_coordenador_logado');
+        //const usuarioLogado = LocalStorageService.obterItem('_coordenador_logado');
 
         // this.coordenadorService desnecessario
         // axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}saldo`)

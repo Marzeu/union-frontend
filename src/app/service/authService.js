@@ -1,24 +1,24 @@
 import LocalStorageService from './localstrorageService';
 
-export const USUARIO_LOGADO = '_usuario_logado';
+export const COORDENADOR_LOGADO = '_coordenador_logado';
 
 export default class AuthService{
 
-    static isUsuarioAutenticado(){
-        const usuario = LocalStorageService.obterItem(USUARIO_LOGADO);
-        return usuario && usuario.id
+    static isCoordenadorAutenticado(){
+        const coordenador = LocalStorageService.obterItem(COORDENADOR_LOGADO);
+        return coordenador && coordenador.id
     }
 
     static removerUsuarioAutenticado(){
-        LocalStorageService.removerItem(USUARIO_LOGADO);        
+        LocalStorageService.removerItem(COORDENADOR_LOGADO);        
     }
 
-    static logar(usuario){
-        LocalStorageService.adicionarItem(USUARIO_LOGADO, usuario);
+    static logar(coordenador){
+        LocalStorageService.adicionarItem(COORDENADOR_LOGADO, coordenador);
     }
 
-    static obterUsuarioAutentica() {
-        return LocalStorageService.obterItem(USUARIO_LOGADO);
+    static obterCoordenadorAutentica() {
+        return LocalStorageService.obterItem(COORDENADOR_LOGADO);
     }
 }
 
