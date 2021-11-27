@@ -5,11 +5,11 @@ import { withRouter } from "react-router";
 
 import CoordenadorService from "../app/service/coordenadorService";
 import LocalStorageService from "../app/service/localstorageService";
-// import {
-//   mensagemErro,
-//   mensagemAlerta,
-//   mensagemSucesso,
-// } from "../components/toastr";
+import {
+  mensagemErro,
+  mensagemAlerta,
+  mensagemSucesso,
+} from "../components/toastr";
 
 class Login extends React.Component {
   state = {
@@ -28,15 +28,12 @@ class Login extends React.Component {
         email: this.state.email,
         senha: this.state.senha,
       })
-      .then((response) => {
-        LocalStorageService.adicionarItem("_coordenador_logado", response.data);
+      .then((res) => {
+        LocalStorageService.adicionarItem("_coordenador_logado", res.data);
         this.props.history.push("/home");
-        console.log(response);
-        console.log(response.email, response.senha);
       })
-      .catch((erro) => {
-        //mensagemErro(err.response.data);
-        console.log(erro.response);
+      .catch((err) => {
+        mensagemErro(err.response.data);
       });
   };
 
