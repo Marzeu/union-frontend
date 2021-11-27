@@ -17,14 +17,16 @@ class Login extends React.Component {
         super();
     }
 
-    entrar = () => {
+    entrar = async () => {
         axios.post('http://localhost:8080/api/coordenador/autenticar', {
             email: this.state.email,
             senha: this.state.senha
         }).then(res => {
-            console.log(res)
+            localStorage.setItem('_usuario_logado', JSON.stringify(res.data));
+            this.props.history.push('/home');
+            console.log(res);
         }).catch(err => {
-            console.log(err.response)
+            console.log(err.response);
         })
     }
 
