@@ -1,9 +1,11 @@
 import React from "react";
 
 const SelecMenu = (props) => {
-  const options = props.lista.map((option) => {
+  const options = props.lista.map((option, index) => {
     return (
-    <option value={option.value}>{option.label}</option>
+      <option key={index} value={option.value}>
+        {option.label}
+      </option>
     );
   });
 
