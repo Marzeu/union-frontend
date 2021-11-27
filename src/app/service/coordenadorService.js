@@ -1,11 +1,11 @@
-import ApiService from './apiservice'
+import ApiService from '../apiservice'
 
-class CoordenadorService extends ApiService{
-    constructor(){
+class CoordenadorService extends ApiService {
+    constructor() {
         super('/api/coordenador')
     }
 
-    autenticar(credenciais){
+    autenticar(credenciais) {
         return this.post('/autenticar', credenciais);
     }
 }

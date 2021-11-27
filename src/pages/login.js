@@ -3,8 +3,8 @@ import Card from '../components/card';
 import FormGroup from '../components/form-group';
 import { withRouter } from 'react-router';
 
-import CoordenadorService from '../service/coordenadorService';
-import LocalStorageService from '../service/localstorageService';
+import CoordenadorService from '../app/service/coordenadorService';
+import LocalStorageService from '../app/service/localstorageService';
 
 class Login extends React.Component {
 
@@ -22,14 +22,14 @@ class Login extends React.Component {
         this.coordenadorService.autenticar({
             email: this.state.email,
             senha: this.state.senha
-        })  
-        .then(res => {
-            LocalStorageService.adicionarItem('_coordenador_logado', res.data);
-            this.props.history.push('/home');
-            console.log(res);
-        }).catch(err => {
-            this.setState({ mensagemErro: err.res.data});
         })
+            .then(res => {
+                LocalStorageService.adicionarItem('_coordenador_logado', res.data);
+                this.props.history.push('/home');
+                console.log(res);
+            }).catch(err => {
+                this.setState({ mensagemErro: err.res.data });
+            })
     }
 
     prepareCadastrar = () => {
@@ -40,28 +40,28 @@ class Login extends React.Component {
         return (
 
             <div className="row">
-                <div className="col-md-6" style={{ possition: 'relative', margin: 'auto' }}>
+                <div className="col-md-6 offset-md-3">
                     <div className="bs-docs-section">
                         <Card title="Login">
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="bs-component">
                                         <fieldset>
-                                            <FormGroup label="Email: *" htmlfor="exampleInputEmail1">
+                                            <FormGroup label="Email: *" htmlfor="inputEmail">
                                                 <input type="email"
                                                     value={this.state.email}
                                                     onChange={e => this.setState({ email: e.target.value })}
                                                     className="form-control"
-                                                    id="exampleInputEmail1"
+                                                    id="inputEmail"
                                                     aria-describedby="emailHelp"
                                                     placeholder="Digite o E-mail" />
                                             </FormGroup>
-                                            <FormGroup label="Senha: *" htmlfor="exampleInputPassword1">
+                                            <FormGroup label="Senha: *" htmlfor="inputPassword">
                                                 <input type="password"
                                                     value={this.state.senha}
                                                     onChange={e => this.setState({ senha: e.target.value })}
                                                     className="form-control"
-                                                    id="exampleInputPassword1"
+                                                    id="inputPassword"
                                                     aria-describedby="emailHelp"
                                                     placeholder="Password" />
                                             </FormGroup>
@@ -90,9 +90,11 @@ class Login extends React.Component {
                         </Card>
                     </div>
                 </div>
-            </div>            
+            </div>
         );
     }
 }
+
+//Login.contextType = AuthContext;
 
 export default withRouter(Login);

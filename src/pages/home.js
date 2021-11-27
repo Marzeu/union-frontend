@@ -1,6 +1,6 @@
 import React from 'react';
-import CoordenadorService from '../service/coordenadorService';
-import LocalStorageService from '../service/localstorageService';
+import CoordenadorService from '../app/service/coordenadorService';
+import LocalStorageService from '../app/service/localstorageService';
 
 class Home extends React.Component {
 
@@ -8,12 +8,12 @@ class Home extends React.Component {
     //     saldo: 0
     // }
 
-    constructor(){
+    constructor() {
         super();
         this.coordenadorService = new CoordenadorService();
     }
 
-    componentDidMount() {        
+    componentDidMount() {
         const usuarioLogado = LocalStorageService.obterItem('_coordenador_logado');
 
         // this.coordenadorService desnecessario
@@ -39,7 +39,7 @@ class Home extends React.Component {
                 <p className="lead">Esse é seu sistema de finanças.</p>
                 <p className="lead">Seu saldo para o mês atual é de R$
                     <span style={{ fontSize: '30px', fontWeight: 'bold' }}>
-                       {/* // {this.state.saldo} */}
+                        {/* // {this.state.saldo} */}
                     </span>
                 </p>
                 <hr className="my-4" />
