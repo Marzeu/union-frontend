@@ -1,4 +1,4 @@
-import ApiService from 'apiservice'
+import ApiService from './apiservice'
 
 class CoordenadorService extends ApiService{
     constructor(){

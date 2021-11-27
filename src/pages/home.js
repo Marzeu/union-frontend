@@ -39,7 +39,7 @@ class Home extends React.Component {
                 <p className="lead">Esse é seu sistema de finanças.</p>
                 <p className="lead">Seu saldo para o mês atual é de R$
                     <span style={{ fontSize: '30px', fontWeight: 'bold' }}>
-                        {this.state.saldo}
+                       {/* // {this.state.saldo} */}
                     </span>
                 </p>
                 <hr className="my-4" />

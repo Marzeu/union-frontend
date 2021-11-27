@@ -6,9 +6,6 @@ import { withRouter } from 'react-router';
 import CoordenadorService from '../service/coordenadorService';
 import LocalStorageService from '../service/localstorageService';
 
-import Card from '../components/card';
-import FormGroup from '../components/form-group';
-
 class Login extends React.Component {
 
     state = {
