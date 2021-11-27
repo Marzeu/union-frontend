@@ -1,10 +1,21 @@
 import React from 'react';
-
+import axios from 'axios';
 
 class Home extends React.Component {
 
     state = {
         saldo: 0
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:8080/api/usuarios/4/saldo')
+            .then(res => {
+                this.setState({ saldo: res.data });
+            }).catch(err => {
+                console.log(err.res);
+            });
+
+
     }
 
     render() {
@@ -45,159 +56,6 @@ class Home extends React.Component {
                     </a>
                 </p>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // <div>
-            //     <ul>
-            //     <nav id="menu-h">
-            //     <ul>
-            //     <li id="name"><a href="#">Union</a>
-
-            //     </li>
-            //     <li>
-            //     <a href="">
-            //     Home
-            //     </a>
-            //     </li>
-
-            //     <li><a href="#">Sobre</a></li>
-
-            //     <li><a href="#">Quem Somos</a></li>
-
-            //     <li><a href="#">Contato</a></li>
-
-            //     <li><a href="login.html">Entrar</a></li>
-            //     </ul>
-            //     </nav>
-
-            //     <div class ="services">
-            //     <h1>Por que usar?</h1>
-            //     <div class ="cen">
-            //     <div class ="service">
-            //     <i class ="fas fa-anchor"></i>
-            //     <h2>Pratico</h2>
-            //     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            //     </div>
-
-            //     <div class ="service">
-            //     <i class ="fab fa-android"></i>
-            //     <h2>Rapido</h2>
-            //     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            //     </div>
-
-            //     <div class ="service">
-            //     <i class ="fab fa-angellist"></i>
-            //     <h2>Segurança</h2>
-            //     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            //     </div>
-
-            //     <div class ="service">
-            //     <i class ="fas fa-apple-alt"></i>
-            //     <h2>Inovação</h2>
-            //     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            //     </div>
-
-            //     <div class ="service">
-            //     <i class ="fas fa-archway"></i>
-            //     <h2>Denuncia</h2>
-            //     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            //     </div>
-
-            //     <div class ="service">
-            //     <i class ="far fa-angry"></i>
-            //     <h2>Unico</h2>
-            //     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            //     </div>
-            //     </div>
-            //     </div>
-
-            //     <div class ="sessao-projetos" id="projetos">
-            //     <div class ="sessao-header">
-            //     <h1>Facilitando Vidas</h1>
-            //     </div>
-            //     <div class ="projetos">
-            //     <div class ="card">
-            //     <div class ="card-img-wrapper">
-            //     <img src="card1.jpg" />
-            //     </div>
-            //     <div class ="card-info">
-            //     <h2>Facil e Pratico</h2>
-            //     <h3>Celular</h3>
-            //     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Cupiditate ducimus vero maxime amet magnam doloribus eos consequatur expedita architecto hic?</p>
-            //     <button class ="btn">Saiba Mais</button>
-            //     </div>
-            //     </div>
-            //     <div class ="card">
-            //     <div class ="card-img-wrapper">
-            //     <img src="card2.jpg"/>
-            //     </div>
-            //     <div class ="card-info">
-            //     <h2>Rapido</h2>
-            //     <h3>Qrcode</h3>
-            //     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Dolores, vero aliquam?Pariatur libero voluptas ipsam ullam consectetur ab facilis cumque.</p>
-            //     <button class ="btn">Saiba Mais</button>
-            //     </div>
-            //     </div>
-            //     <div class ="card">
-            //     <div class ="card-img-wrapper">
-            //     <img src="card3.jpg"/>
-            //     </div>
-            //     <div class ="card-info">
-            //     <h2>Union</h2>
-            //     <h3>Unidos desde o começo</h3>
-            //     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.Est pariatur soluta doloremque tempore nisi placeat, eveniet voluptate recusandae.Eius, sapiente?</p>
-            //     <button class ="btn">Saiba Mais</button>
-            //     </div>
-            //     </div>
-            //     </div>
-
-
-
-
-            //     <footer>
-            //     <div class ="footer-content">
-            //     <p>
-            //     Copyright &copf; 2021, Union - Todos os direitos reservados
-            //     </p>
-
-            //     </div>
-            //     </footer>
-
-            // </div>
         );
     }
 }

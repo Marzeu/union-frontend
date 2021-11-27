@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Rotas from "./routes/rotas";
 // import './assets/css/login.css';
 // import './assets/css/menu.css';
