@@ -6,7 +6,7 @@ import SelecMenu from "../selectMenu";
 import FuncionariosTable from "./funcionariosTable";
 import FuncionarioService from "../../app/service/funcioarioService";
 import LocalStorageService from "../../app/service/localstorageService";
-//import * as messages from "../../components/toastr";
+import * as messages from "../../components/toastr";
 
 class ConsultaFuncionarios extends React.Component {
   state = {
@@ -36,15 +36,15 @@ class ConsultaFuncionarios extends React.Component {
       telefone: this.state.telefone,
       coordenador: 1,
       //cargo: this.state.cargo,
-    };    
+    };
 
     this.funcionarioService
       .consultar(funcionarioFiltro)
       .then((res) => {
         const lista = res.data;
-        console.log(lista)
+        console.log(lista);
         if (lista.length < 1) {
-          // messages.mensagemAlert("Nenhum resultado encontrado.");
+          messages.mensagemAlerta("Nenhum resultado encontrado.");
         }
         this.setState({ funcionarios: lista });
       })
@@ -53,12 +53,20 @@ class ConsultaFuncionarios extends React.Component {
       });
   };
 
+  editar = (id) => {
+    console.log(id);
+  };
+
+  apagar = (id) => {
+    console.log(id);
+  };
+
   render() {
     const cargo = [
       { label: "Selecione...", value: "" },
       { label: "Agente de Saúde", value: 1 },
       { label: "Agente Sanitário", value: 2 },
-    ];
+    ];    
 
     return (
       <Card title="Consulta Funcionários">
@@ -144,7 +152,11 @@ class ConsultaFuncionarios extends React.Component {
         <div className="row">
           <div className="col-md-12">
             <div className="bs-component">
-              <FuncionariosTable funcionarios={this.state.funcionarios}/>
+              <FuncionariosTable
+                funcionarios={this.state.funcionarios}
+                deletar={this.apagar}
+                editar={this.editar}
+              />
             </div>
           </div>
         </div>

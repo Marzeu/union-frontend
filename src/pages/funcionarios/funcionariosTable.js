@@ -1,19 +1,31 @@
 import React from "react";
 
-const FuncionariosTable = (props) => { 
-  
+const FuncionariosTable = (props) => {
   const rows = props.funcionarios.map((funcionario) => {
-        
     return (
-      
       <tr key={funcionario.id}>
         <td>{funcionario.nome}</td>
         <td>{funcionario.cpf}</td>
         <td>{funcionario.cep}</td>
         <td>{funcionario.telefone}</td>
-        <td>{funcionario.coordenador.id}</td>
-        <td></td>
-      </tr>       
+        <td>{funcionario.coordenador.nome}</td>
+        <td>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={(e) => props.editar(funcionario.id)}
+          >
+            Editar
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={(e) => props.deletar(funcionario.id)}
+          >
+            Apagar
+          </button>
+        </td>
+      </tr>
     );
   });
 
@@ -26,9 +38,10 @@ const FuncionariosTable = (props) => {
           <th scope="col">Cep</th>
           <th scope="col">Telefone</th>
           <th scope="col">Coordenador</th>
+          <th scope="col">Ações</th>
         </tr>
       </thead>
-      <tbody>{rows}</tbody>    
+      <tbody>{rows}</tbody>
     </table>
   );
 };
