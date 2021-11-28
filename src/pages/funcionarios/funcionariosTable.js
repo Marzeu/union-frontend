@@ -1,18 +1,22 @@
 import React from "react";
 
-export default (props) => {
-  const linhas = props.funcionarios.map((funcionario) => {
+const FuncionariosTable = (props) => { 
+  
+  const rows = props.funcionarios.map((funcionario) => {
+        
     return (
+      
       <tr key={funcionario.id}>
         <td>{funcionario.nome}</td>
         <td>{funcionario.cpf}</td>
         <td>{funcionario.cep}</td>
         <td>{funcionario.telefone}</td>
-        <td>{funcionario.coordenador}</td>
+        <td>{funcionario.coordenador.id}</td>
         <td></td>
-      </tr>
+      </tr>       
     );
   });
+
   return (
     <table className="table table-hover">
       <thead>
@@ -24,7 +28,9 @@ export default (props) => {
           <th scope="col">Coordenador</th>
         </tr>
       </thead>
-      <tbody>{linhas}</tbody>
+      <tbody>{rows}</tbody>    
     </table>
   );
 };
+
+export default FuncionariosTable;

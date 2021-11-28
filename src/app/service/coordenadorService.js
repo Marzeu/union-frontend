@@ -5,7 +5,7 @@ class CoordenadorService extends ApiService {
     super("/api/coordenador");
   }
 
-  autenticar(credenciais) {
+  autenticar(credenciais) {    
     return this.post("/autenticar", credenciais);
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import CoordenadorService from '../app/service/coordenadorService';
-//import LocalStorageService from '../app/service/localstorageService';
+
+import { AuthContext } from '../main/provedorAutenticacao'
 
 class Home extends React.Component {
 
@@ -14,12 +15,12 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        //const usuarioLogado = LocalStorageService.obterItem('_coordenador_logado');
-
-        // this.coordenadorService desnecessario
-        // axios.get(`http://localhost:8080/api/usuarios/${usuarioLogado.id}saldo`)
+        // const coordenadorLogado = this.context.coordenadorAutenticado
+        // console.log(coordenadorLogado)
+        //this.coordenadorService 
+        // axios.get(`http://localhost:8080/api/usuarios/${coordenadorLogado.id}`)
         //     .then(res => {
-        //         this.setState({ saldo: res.data });
+        //         //this.setState({ saldo: res.data });
         //     }).catch(err => {
         //         console.log(err.res);
         //     });
@@ -69,5 +70,6 @@ class Home extends React.Component {
     }
 }
 
+Home.contextType = AuthContext;
 
 export default Home;

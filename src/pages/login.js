@@ -3,6 +3,8 @@ import Card from "../components/card";
 import FormGroup from "../components/form-group";
 import { withRouter } from "react-router";
 
+import { AuthContext } from "../main/provedorAutenticacao";
+
 import CoordenadorService from "../app/service/coordenadorService";
 import LocalStorageService from "../app/service/localstorageService";
 import {
@@ -29,7 +31,7 @@ class Login extends React.Component {
         senha: this.state.senha,
       })
       .then((res) => {
-        LocalStorageService.adicionarItem("_coordenador_logado", res.data);
+        this.context.iniciarSessao(res.data);        
         this.props.history.push("/home");
       })
       .catch((err) => {
@@ -105,6 +107,6 @@ class Login extends React.Component {
   }
 }
 
-//Login.contextType = AuthContext;
+Login.contextType = AuthContext;
 
 export default withRouter(Login);
