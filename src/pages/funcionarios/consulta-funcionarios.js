@@ -7,6 +7,7 @@ import FuncionariosTable from "./funcionariosTable";
 import FuncionarioService from "../../app/service/funcioarioService";
 import LocalStorageService from "../../app/service/localstorageService";
 import * as messages from "../../components/toastr";
+import Swal from "sweetalert2";
 
 class ConsultaFuncionarios extends React.Component {
   state = {
@@ -15,7 +16,8 @@ class ConsultaFuncionarios extends React.Component {
     cep: "",
     telefone: "",
     coordenador: "",
-    cargo: "",
+    //cargo: "",
+    funcionarioApagar: {},
     funcionarios: [],
   };
 
@@ -34,7 +36,7 @@ class ConsultaFuncionarios extends React.Component {
       cpf: this.state.cpf,
       cep: this.state.cep,
       telefone: this.state.telefone,
-      coordenador: 1,
+      //coordenador: coordenador.id,
       //cargo: this.state.cargo,
     };
 
@@ -42,7 +44,6 @@ class ConsultaFuncionarios extends React.Component {
       .consultar(funcionarioFiltro)
       .then((res) => {
         const lista = res.data;
-        console.log(lista);
         if (lista.length < 1) {
           messages.mensagemAlerta("Nenhum resultado encontrado.");
         }
@@ -57,8 +58,47 @@ class ConsultaFuncionarios extends React.Component {
     console.log(id);
   };
 
-  apagar = (id) => {
-    console.log(id);
+  confirmarApagar = (funcionario) => {
+    Swal.fire({
+      title: "Você tem certeza que deseja apagar esse funcionário?",
+      text: "Essa ação não poderá ser desfeita.",
+      icon: "warning",
+      confirmButtonText: "Sim",
+      cancelButtonText: "Não",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Apagado!',
+          'Funcionário apadado com sucesso!',
+          'success'
+        )
+        this.setState({ funcionarioApagar: funcionario });        
+        this.apagar();
+      }
+    });
+  };
+
+  apagar = () => {
+    this.funcionarioService
+      .deletar(this.state.funcionarioApagar.id)
+      .then((res) => {
+        const funcionarios = this.state.funcionarios;
+        const indice = funcionarios.indexOf(this.state.funcionarioApagar);
+        console.log(indice)
+        funcionarios.splice(indice, 1);
+        this.setState({ funcionarios: funcionarios });
+        //messages.mensagemSucesso("Funcionário apagado com sucesso!");
+      })
+      .catch((err) => {
+        console.log(err)
+        messages.mensagemErro(
+          "Ocorreu um erro ao tentar apagar o Funcionário."
+        );   
+        console.log(err)
+      });
   };
 
   render() {
@@ -66,7 +106,7 @@ class ConsultaFuncionarios extends React.Component {
       { label: "Selecione...", value: "" },
       { label: "Agente de Saúde", value: 1 },
       { label: "Agente Sanitário", value: 2 },
-    ];    
+    ];
 
     return (
       <Card title="Consulta Funcionários">
@@ -154,7 +194,7 @@ class ConsultaFuncionarios extends React.Component {
             <div className="bs-component">
               <FuncionariosTable
                 funcionarios={this.state.funcionarios}
-                deletar={this.apagar}
+                deletar={this.confirmarApagar}
                 editar={this.editar}
               />
             </div>
