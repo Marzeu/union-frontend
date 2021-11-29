@@ -12,6 +12,7 @@ const FuncionariosTable = (props) => {
         <td>
           <button
             type="button"
+            title="Editar"
             className="btn btn-primary"
             onClick={(e) => props.editar(funcionario.id)}
           >
@@ -19,8 +20,9 @@ const FuncionariosTable = (props) => {
           </button>
           <button
             type="button"
+            title="Excluir"
             className="btn btn-danger"
-            onClick={(e) => props.deletar(funcionario.id)}
+            onClick={(e) => props.deletar(funcionario)}
           >
             Apagar
           </button>

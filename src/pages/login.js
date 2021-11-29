@@ -2,16 +2,9 @@ import React from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
 import { withRouter } from "react-router";
-
 import { AuthContext } from "../main/provedorAutenticacao";
-
+import { mensagemErro } from "../components/toastr";
 import CoordenadorService from "../app/service/coordenadorService";
-import LocalStorageService from "../app/service/localstorageService";
-import {
-  mensagemErro,
-  mensagemAlerta,
-  mensagemSucesso,
-} from "../components/toastr";
 
 class Login extends React.Component {
   state = {
@@ -31,7 +24,7 @@ class Login extends React.Component {
         senha: this.state.senha,
       })
       .then((res) => {
-        this.context.iniciarSessao(res.data);        
+        this.context.iniciarSessao(res.data);
         this.props.history.push("/home");
       })
       .catch((err) => {
