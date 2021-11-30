@@ -55,6 +55,7 @@ class ConsultaFuncionarios extends React.Component {
   };
 
   editar = (id) => {
+    this.props.history.push(`/cadastrar-funcionarios/${id}`)
     console.log(id);
   };
 

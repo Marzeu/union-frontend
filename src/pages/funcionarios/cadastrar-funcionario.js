@@ -15,12 +15,57 @@ class CadastrarFuncionarios extends React.Component {
     cep: "",
     telefone: "",
     coordenador: "",
+    atualizando: false,
   };
 
   constructor() {
     super();
     this.funcinarioService = new FuncinarioService();
   }
+
+  componentDidMount() {
+    const params = this.props.match.params;
+    if (params.id) {
+      this.funcinarioService
+        .obterPorId(params.id)
+        .then((res) => {
+          this.setState({ ...res.data, atualizando: true });
+        })
+        .catch((err) => {
+          messages.mensagemErro(err.response.data);
+        });
+    }
+  }
+
+  atualizar = () => {
+    const coordenadorLogado = LocalStorageService.obterItem(
+      "_coordenador_logado"
+    );
+
+    const { nome, cpf, cep, telefone, id, coordenador } = this.state;
+    const funcionario = {
+      nome,
+      cpf,
+      cep,
+      telefone,
+      id,
+      coordenador,
+    };
+
+    this.funcinarioService
+      .atualizar(funcionario)
+      .then((res) => {
+        this.props.history.push("consulta-funcionarios");
+        //messages.mensagemSucesso("Funcionário atualizado com sucesso!")
+      })
+      .catch((err) => {
+        console.log(err);
+        //console.log(err.response)
+        //console.log(err.response.data)
+
+        // messages.mensagemErro("Ocorreu um erro.")
+      });
+  };
 
   submit = () => {
     const coordenadorLogado = LocalStorageService.obterItem(
@@ -60,7 +105,13 @@ class CadastrarFuncionarios extends React.Component {
 
   render() {
     return (
-      <Card title="Cadastro de Funcionários">
+      <Card
+        title={
+          this.state.atualizando
+            ? "Editar Funcionário"
+            : "Cadastro de Funcionários"
+        }
+      >
         <div className="row">
           <div className="col-md-12">
             <FormGroup id="inputNome" label="Nome: ">
@@ -128,9 +179,15 @@ class CadastrarFuncionarios extends React.Component {
           </div>
           <div className="row">
             <div className="col-md 6">
-              <button className="btn btn-success" onClick={this.submit}>
-                Salvar
-              </button>
+              {this.state.atualizando ? (
+                <button className="btn btn-primary" onClick={this.atualizar}>
+                  Atualizar
+                </button>
+              ) : (
+                <button className="btn btn-success" onClick={this.submit}>
+                  Salvar
+                </button>
+              )}
               <button
                 onClick={(e) =>
                   this.props.history.push("/consulta-funcionarios")

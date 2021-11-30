@@ -32,9 +32,9 @@ class Login extends React.Component {
       });
   };
 
-  prepareCadastrar = () => {
-    this.props.history.push("/cadastro-usuario");
-  };
+  // prepareCadastrar = () => {
+  //   this.props.history.push("/cadastrar-usuario");
+  // };
 
   render() {
     return (
@@ -80,14 +80,14 @@ class Login extends React.Component {
                         <i className="pi pi-sign-in"></i>
                         <span className="text-btn">Entrar</span>
                       </button>
-                      <button
+                      {/* <button
                         style={{ width: "150px" }}
                         onClick={this.prepareCadastrar}
                         className="btn btn-primary"
                       >
                         <i className="pi pi-plus"></i>
                         <span className="text-btn">Cadastrar</span>
-                      </button>
+                      </button> */}
                     </fieldset>
                   </div>
                 </div>

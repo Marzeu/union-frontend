@@ -37,5 +37,17 @@ export default class FuncionarioService extends ApiService {
 
   deletar(id) {
     return this.delete(`/${id}`);
-  }  
+  }
+
+  obterPorId(id) {
+    return this.get(`/${id}`);
+  }
+
+  atualizar(funcionario) {
+    return this.put(`/${funcionario.id}`, funcionario);
+  }
+
+  validar(funcionario){
+      const erros = []
+  }
 }

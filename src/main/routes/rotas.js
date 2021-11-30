@@ -15,7 +15,7 @@ const Rotas = () => {
         <Route path="/login" component={Login} />
         {/* <Route path="/cadastro-usuario" component={CadastroUsuario} /> */}
         <Route path="/consulta-funcionarios" component={ConsultaFuncionarios} />
-        <Route path="/cadastrar-funcionarios" component={CadastrarFuncionario} />
+        <Route path="/cadastrar-funcionarios/:id?" component={CadastrarFuncionario} />
       </Switch>
     </HashRouter>
   );
