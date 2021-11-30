@@ -18,18 +18,18 @@ toastr.options = {
   hideMethod: "fadeOut",
 };
 
-export function mostrarMensagem(mensagem, titulo, tipo) {
-  toastr[tipo](mensagem, titulo);
+export function mostrarMensagem(mensagem, titulo) {
+  toastr(mensagem, titulo);
 }
 
 export function mensagemErro(mensagem) {
-  mostrarMensagem("Erro!", mensagem, "error");
+  toastr.error("Erro!", mensagem);
 }
 
 export function mensagemSucesso(mensagem) {
-  mostrarMensagem("Sucesso!", mensagem, "sucess");
+  toastr.success("Sucesso!", mensagem);
 }
 
 export function mensagemAlerta(mensagem) {
-  mostrarMensagem("Alerta.", mensagem, "warning");
+  toastr.warning("Alerta.", mensagem);
 }

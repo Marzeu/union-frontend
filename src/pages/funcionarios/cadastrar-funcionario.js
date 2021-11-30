@@ -81,11 +81,19 @@ class CadastrarFuncionarios extends React.Component {
       coordenador: coordenadorLogado.id,
     };
 
+    try {
+      this.funcinarioService.validar(funcionario);
+    } catch (erro) {
+      const mensagens = erro.mensagens;
+      mensagens.forEach((msg) => messages.mensagemErro(msg));
+      return false;
+    }
+
     this.funcinarioService
       .salvar(funcionario)
       .then((res) => {
         this.props.history.push("consulta-funcionarios");
-        //messages.mensagemSucesso("Funcionário cadastrado com sucesso!")
+        messages.mensagemSucesso("Funcionário cadastrado com sucesso!")
       })
       .catch((err) => {
         console.log(err);

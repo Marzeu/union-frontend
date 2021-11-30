@@ -1,5 +1,7 @@
 import ApiService from "../apiservice";
 
+import ErroValidacao from "../exception/ErroValidacao";
+
 export default class FuncionarioService extends ApiService {
   constructor() {
     super("/api/funcionarios");
@@ -47,7 +49,29 @@ export default class FuncionarioService extends ApiService {
     return this.put(`/${funcionario.id}`, funcionario);
   }
 
-  validar(funcionario){
-      const erros = []
+  validar(funcionario) {
+    const erros = [];
+
+    if (!funcionario.nome) {
+      erros.push("Informe o Nome.");
+    }
+    if (!funcionario.cpf) {
+      erros.push("Informe o CPF.");
+    }
+    if (!funcionario.cep) {
+      erros.push("Informe o CEP.");
+    }
+    if (!funcionario.telefone) {
+      erros.push("Informe o Telefone.");
+    }
+    if (!funcionario.nome) {
+      erros.push("Informe o Nome.");
+    }
+    if (!funcionario.coordenador) {
+      erros.push("Informe o Coordenador.");
+    }
+    if (erros && erros.length > 0) {
+      throw new ErroValidacao(erros);
+    }
   }
 }
