@@ -69,7 +69,7 @@ class Login extends React.Component {
                           className="form-control"
                           id="inputPassword"
                           aria-describedby="emailHelp"
-                          placeholder="Password"
+                          placeholder="Digite a Senha"
                         />
                       </FormGroup>
                       <button

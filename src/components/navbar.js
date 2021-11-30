@@ -23,8 +23,8 @@ const Navbar = (props) => {
                         <NavbarItem render={props.isUsuarioAutenticado} href="#/cadastro-usuarios" label="Usuários" />
                         <NavbarItem render={props.isUsuarioAutenticado} href="#/consulta-lancamentos" label="Lançamentos" /> */}
                         <NavbarItem href="#/home" label="Home" />
-                        <NavbarItem href="#/cadastro-usuarios" label="Usuários" />
-                        <NavbarItem href="#/consulta-lancamentos" label="Lançamentos" />
+                        <NavbarItem href="#/cadastro-funcionarios" label="Cadastrar Funcionários" />
+                        <NavbarItem href="#/consulta-funcionarios" label="Funcionários" />
                         {/* <ul className="navbar-nav exit" style={{ float: 'right' }}> */}
                         {/* <NavbarItem render={props.isUsuarioAutenticado} onClick={props.deslogar} href="#/login" label="Sair" /> */}
                         <NavbarItem onClick={props.deslogar} href="#/login" label="Sair" />

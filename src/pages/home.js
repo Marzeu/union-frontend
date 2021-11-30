@@ -46,7 +46,7 @@ class Home extends React.Component {
                 <hr className="my-4" />
                 <p>E essa é sua área administrativa, utilize um dos menus ou botões abaixo para navegar pelo sistema.</p>
                 <p className="lead">
-                    <a className="btn btn-primary btn-lg"
+                    {/* <a className="btn btn-primary btn-lg"
                         href="#/cadastro-usuarios"
                         role="button"
                     >
@@ -54,14 +54,14 @@ class Home extends React.Component {
                         <span className="text-btn">
                             Cadastrar Usuário
                         </span>
-                    </a>
+                    </a> */}
                     <a className="btn btn-success btn-lg"
-                        href="#/cadastro-lancamentos"
+                        href="#/cadastrar-funcionarios"
                         role="button"
                     >
                         <i className="pi pi-money-bill"></i>
                         <span className="text-btn">
-                            Cadastrar Lançamento
+                            Cadastrar Funcionário
                         </span>
                     </a>
                 </p>

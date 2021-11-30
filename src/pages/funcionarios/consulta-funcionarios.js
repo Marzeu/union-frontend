@@ -7,7 +7,7 @@ import FuncionariosTable from "./funcionariosTable";
 import FuncionarioService from "../../app/service/funcioarioService";
 import LocalStorageService from "../../app/service/localstorageService";
 import * as messages from "../../components/toastr";
-import Swal from "sweetalert2";
+//import Swal from "sweetalert";
 
 class ConsultaFuncionarios extends React.Component {
   state = {
@@ -58,28 +58,28 @@ class ConsultaFuncionarios extends React.Component {
     console.log(id);
   };
 
-  confirmarApagar = (funcionario) => {
-    Swal.fire({
-      title: "Você tem certeza que deseja apagar esse funcionário?",
-      text: "Essa ação não poderá ser desfeita.",
-      icon: "warning",
-      confirmButtonText: "Sim",
-      cancelButtonText: "Não",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Apagado!',
-          'Funcionário apadado com sucesso!',
-          'success'
-        )
-        this.setState({ funcionarioApagar: funcionario });        
-        this.apagar();
-      }
-    });
-  };
+  // confirmarApagar = (funcionario) => {
+  //   Swal.fire({
+  //     title: "Você tem certeza que deseja apagar esse funcionário?",
+  //     text: "Essa ação não poderá ser desfeita.",
+  //     icon: "warning",
+  //     confirmButtonText: "Sim",
+  //     cancelButtonText: "Não",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       Swal.fire(
+  //         'Apagado!',
+  //         'Funcionário apadado com sucesso!',
+  //         'success'
+  //       )
+  //       this.setState({ funcionarioApagar: funcionario });        
+  //       this.apagar();
+  //     }
+  //   });
+  // };
 
   apagar = () => {
     this.funcionarioService
@@ -100,6 +100,10 @@ class ConsultaFuncionarios extends React.Component {
         console.log(err)
       });
   };
+
+  preparaFormularioCadastro = () => {
+    this.props.history.push('/cadastrar-funcionarios')
+  }
 
   render() {
     const cargo = [
@@ -179,7 +183,7 @@ class ConsultaFuncionarios extends React.Component {
               </button>
               <button
                 style={{ width: "150px" }}
-                //onClick={this.prepareCadastrar}
+                onClick={this.preparaFormularioCadastro}
                 className="btn btn-primary"
               >
                 <i className="pi pi-plus"></i>

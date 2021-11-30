@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 import Card from "../../components/card";
 import FormGroup from "../../components/form-group";
 import FuncinarioService from "../../app/service/funcioarioService";
+import * as messages from "../../components/toastr";
+import LocalStorageService from "../../app/service/localstorageService";
 
 class CadastrarFuncionarios extends React.Component {
   state = {
@@ -21,7 +23,32 @@ class CadastrarFuncionarios extends React.Component {
   }
 
   submit = () => {
-    console.log(this.state);
+    const coordenadorLogado = LocalStorageService.obterItem(
+      "_coordenador_logado"
+    );
+
+    const { nome, cpf, cep, telefone } = this.state;
+    const funcionario = {
+      nome,
+      cpf,
+      cep,
+      telefone,
+      coordenador: coordenadorLogado.id,
+    };
+
+    this.funcinarioService
+      .salvar(funcionario)
+      .then((res) => {
+        this.props.history.push("consulta-funcionarios");
+        //messages.mensagemSucesso("Funcionário cadastrado com sucesso!")
+      })
+      .catch((err) => {
+        console.log(err);
+        //console.log(err.response)
+        //console.log(err.response.data)
+
+        // messages.mensagemErro("Ocorreu um erro.")
+      });
   };
 
   handleChange = (e) => {
@@ -53,7 +80,7 @@ class CadastrarFuncionarios extends React.Component {
             <FormGroup id="inputTelefone" type="text" label="Telefone: ">
               <input
                 id="inputTelefone"
-                type="text"
+                // type="text"
                 className="form-control"
                 name="telefone"
                 value={this.state.telefone}
@@ -65,7 +92,7 @@ class CadastrarFuncionarios extends React.Component {
             <FormGroup id="inputCoordenador" type="text" label="Coordenador: ">
               <input
                 id="inputCoordenador"
-                type="text"
+                // type="text"
                 className="form-control"
                 name="coordenador"
                 value={this.state.coordenador}
@@ -79,7 +106,7 @@ class CadastrarFuncionarios extends React.Component {
             <FormGroup id="inputCpf" type="text" label="CPF: ">
               <input
                 id="inputCpf"
-                type="text"
+                //type="text"
                 className="form-control"
                 name="cpf"
                 value={this.state.cpf}
@@ -91,7 +118,7 @@ class CadastrarFuncionarios extends React.Component {
             <FormGroup id="inputCep" type="text" label="CEP: ">
               <input
                 id="inputCep"
-                type="text"
+                // type="text"
                 className="form-control"
                 name="cep"
                 value={this.state.cep}
@@ -104,7 +131,14 @@ class CadastrarFuncionarios extends React.Component {
               <button className="btn btn-success" onClick={this.submit}>
                 Salvar
               </button>
-              <button className="btn btn-danger">Cancelar</button>
+              <button
+                onClick={(e) =>
+                  this.props.history.push("/consulta-funcionarios")
+                }
+                className="btn btn-danger"
+              >
+                Cancelar
+              </button>
             </div>
           </div>
         </div>
