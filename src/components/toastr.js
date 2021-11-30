@@ -18,10 +18,6 @@ toastr.options = {
   hideMethod: "fadeOut",
 };
 
-export function mostrarMensagem(mensagem, titulo) {
-  toastr(mensagem, titulo);
-}
-
 export function mensagemErro(mensagem) {
   toastr.error("Erro!", mensagem);
 }

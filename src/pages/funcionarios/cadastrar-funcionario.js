@@ -1,5 +1,4 @@
 import React from "react";
-
 import { withRouter } from "react-router-dom";
 import Card from "../../components/card";
 import FormGroup from "../../components/form-group";
@@ -55,15 +54,11 @@ class CadastrarFuncionarios extends React.Component {
     this.funcinarioService
       .atualizar(funcionario)
       .then((res) => {
-        this.props.history.push("consulta-funcionarios");
-        //messages.mensagemSucesso("Funcionário atualizado com sucesso!")
+        this.props.history.push("/consulta-funcionarios");
+        messages.mensagemSucesso("Funcionário atualizado com Sucesso!");
       })
-      .catch((err) => {
-        console.log(err);
-        //console.log(err.response)
-        //console.log(err.response.data)
-
-        // messages.mensagemErro("Ocorreu um erro.")
+      .catch((err) => {        
+        messages.mensagemErro(err.response.data);
       });
   };
 
@@ -93,14 +88,10 @@ class CadastrarFuncionarios extends React.Component {
       .salvar(funcionario)
       .then((res) => {
         this.props.history.push("consulta-funcionarios");
-        messages.mensagemSucesso("Funcionário cadastrado com sucesso!")
+        messages.mensagemSucesso("Funcionário cadastrado com sucesso!");
       })
       .catch((err) => {
-        console.log(err);
-        //console.log(err.response)
-        //console.log(err.response.data)
-
-        // messages.mensagemErro("Ocorreu um erro.")
+        messages.mensagemErro(err.response.data);
       });
   };
 

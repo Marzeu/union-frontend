@@ -37,7 +37,7 @@ class Home extends React.Component {
                     style={{ float: 'right', margin: 'auto' }}>
                 </img> */}
                 <h1 className="display-3">Bem vindo (a)!</h1>
-                <p className="lead">Esse é seu sistema de finanças.</p>
+                <p className="lead">Esse é seu sistema.</p>
                 {/* <p className="lead">Seu saldo para o mês atual é de R$
                     <span style={{ fontSize: '30px', fontWeight: 'bold' }}>
                         {this.state.saldo}

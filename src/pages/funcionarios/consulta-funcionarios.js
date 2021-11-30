@@ -7,7 +7,7 @@ import FuncionariosTable from "./funcionariosTable";
 import FuncionarioService from "../../app/service/funcioarioService";
 import LocalStorageService from "../../app/service/localstorageService";
 import * as messages from "../../components/toastr";
-//import Swal from "sweetalert";
+import Swal from "sweetalert2";
 
 class ConsultaFuncionarios extends React.Component {
   state = {
@@ -55,32 +55,35 @@ class ConsultaFuncionarios extends React.Component {
   };
 
   editar = (id) => {
-    this.props.history.push(`/cadastrar-funcionarios/${id}`)
+    this.props.history.push(`/cadastrar-funcionarios/${id}`);
     console.log(id);
   };
 
-  // confirmarApagar = (funcionario) => {
-  //   Swal.fire({
-  //     title: "Você tem certeza que deseja apagar esse funcionário?",
-  //     text: "Essa ação não poderá ser desfeita.",
-  //     icon: "warning",
-  //     confirmButtonText: "Sim",
-  //     cancelButtonText: "Não",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       Swal.fire(
-  //         'Apagado!',
-  //         'Funcionário apadado com sucesso!',
-  //         'success'
-  //       )
-  //       this.setState({ funcionarioApagar: funcionario });        
-  //       this.apagar();
-  //     }
-  //   });
-  // };
+  confirmarApagar = (funcionario) => {
+    Swal.fire({
+      title: "Você tem certeza que deseja apagar esse funcionário?",
+      text: "Essa ação não poderá ser desfeita.",
+      icon: "warning",
+      confirmButtonText: "Sim",
+      cancelButtonText: "Não",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Apagado!", "Funcionário apadado com sucesso!", "success")
+          .then((red) => {
+            this.setState({ funcionarioApagar: funcionario });
+            this.apagar();
+          })
+          .catch((err) => {
+            messages.mensagemErro(
+              "Ocorreu um erro ao tentar apagar o Funcionário."
+            );
+          });
+      }
+    });
+  };
 
   apagar = () => {
     this.funcionarioService
@@ -88,23 +91,20 @@ class ConsultaFuncionarios extends React.Component {
       .then((res) => {
         const funcionarios = this.state.funcionarios;
         const indice = funcionarios.indexOf(this.state.funcionarioApagar);
-        console.log(indice)
         funcionarios.splice(indice, 1);
         this.setState({ funcionarios: funcionarios });
-        //messages.mensagemSucesso("Funcionário apagado com sucesso!");
+        messages.mensagemSucesso("Funcionário apagado com sucesso!");
       })
       .catch((err) => {
-        console.log(err)
         messages.mensagemErro(
           "Ocorreu um erro ao tentar apagar o Funcionário."
-        );   
-        console.log(err)
+        );
       });
   };
 
   preparaFormularioCadastro = () => {
-    this.props.history.push('/cadastrar-funcionarios')
-  }
+    this.props.history.push("/cadastrar-funcionarios");
+  };
 
   render() {
     const cargo = [
