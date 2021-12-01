@@ -49,6 +49,10 @@ export default class FuncionarioService extends ApiService {
     return this.put(`/${funcionario.id}`, funcionario);
   }
 
+  detalhes(id) {
+    return this.get(`/detalhes/${id}`);
+  }
+
   validar(funcionario) {
     const erros = [];
 

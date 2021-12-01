@@ -11,6 +11,14 @@ const FuncionariosTable = (props) => {
         <td>{funcionario.coordenador.nome}</td>
         <td>
           <button
+            className="btn btn-info"
+            onClick={(e) => props.funcionarioDetalhes(funcionario.id)}
+            type="button"
+          >
+            Detalhes
+          </button>
+
+          <button
             type="button"
             title="Editar"
             className="btn btn-primary"

@@ -56,7 +56,7 @@ class ConsultaFuncionarios extends React.Component {
 
   editar = (id) => {
     this.props.history.push(`/cadastrar-funcionarios/${id}`);
-    console.log(id);
+    
   };
 
   confirmarApagar = (funcionario) => {
@@ -105,6 +105,10 @@ class ConsultaFuncionarios extends React.Component {
   preparaFormularioCadastro = () => {
     this.props.history.push("/cadastrar-funcionarios");
   };
+
+  funcionarioDetalhes = (id) => {
+    this.props.history.push(`/detalhes/${id}`);
+  }
 
   render() {
     const cargo = [
@@ -201,6 +205,7 @@ class ConsultaFuncionarios extends React.Component {
                 funcionarios={this.state.funcionarios}
                 deletar={this.confirmarApagar}
                 editar={this.editar}
+                detalhes={this.funcionarioDetalhes}
               />
             </div>
           </div>
