@@ -1,8 +1,6 @@
 import React from "react";
-
 import AuthService from "../app/service/authService";
 import jwt from "jsonwebtoken";
-import ApiService from "../app/apiservice";
 
 export const AuthContext = React.createContext();
 export const AuthConsumer = AuthContext.Consumer;
@@ -23,14 +21,17 @@ class ProvedorAutenticacao extends React.Component {
       nome: claims.nome,
     };
 
-    ApiService.registrarToken(token);
     AuthService.logar(coordenador, token);
     this.setState({ isAutenticado: true, coordenadorAutenticado: coordenador });
   };
 
   encerrarSessao = () => {
-    AuthService.removeCoordenadorAutenticado();
-    this.setState({ isAutenticado: false, coordenadorAutenticado: null });
+    try {
+      AuthService.removeCoordenadorAutenticado();
+      this.setState({ isAutenticado: false, coordenadorAutenticado: null });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   async componentDidMount() {

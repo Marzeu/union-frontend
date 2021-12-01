@@ -7,6 +7,7 @@ export const COORDENADOR_LOGADO = "_coordenador_logado";
 export const TOKEN = "access_token";
 
 export default class AuthService {
+  
   static isCoordenadorAutenticado() {
     const token = LocalStorageService.obterItem(TOKEN);
     if (!token) {
@@ -20,7 +21,7 @@ export default class AuthService {
     return !isTokenInvalido;
   }
 
-  static removerUsuarioAutenticado() {
+  static removerCoordenadorAutenticado() {
     LocalStorageService.removerItem(COORDENADOR_LOGADO);
     LocalStorageService.removerItem(TOKEN);
   }
