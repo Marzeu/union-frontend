@@ -302,4 +302,15 @@ pre {
 
 .btn {
   margin-right: 5px;
+  margin-top: 5px;
+}
+
+td{
+  text-align: center;
+  vertical-align: middle;
+}
+
+th{
+  text-align: center;
+  vertical-align: middle;
 }
