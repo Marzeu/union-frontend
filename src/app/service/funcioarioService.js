@@ -1,5 +1,4 @@
 import ApiService from "../apiservice";
-
 import ErroValidacao from "../exception/ErroValidacao";
 
 export default class FuncionarioService extends ApiService {

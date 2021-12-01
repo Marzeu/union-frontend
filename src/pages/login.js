@@ -1,10 +1,10 @@
 import React from "react";
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
+import CoordenadorService from "../app/service/coordenadorService";
 import { withRouter } from "react-router";
 import { AuthContext } from "../main/provedorAutenticacao";
 import { mensagemErro } from "../components/toastr";
-import CoordenadorService from "../app/service/coordenadorService";
 
 class Login extends React.Component {
   state = {
