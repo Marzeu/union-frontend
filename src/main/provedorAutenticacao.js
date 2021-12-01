@@ -27,7 +27,7 @@ class ProvedorAutenticacao extends React.Component {
 
   encerrarSessao = () => {
     try {
-      AuthService.removeCoordenadorAutenticado();
+      AuthService.removerCoordenadorAutenticado();
       this.setState({ isAutenticado: false, coordenadorAutenticado: null });
     } catch (error) {
       console.log(error);
@@ -54,7 +54,11 @@ class ProvedorAutenticacao extends React.Component {
       encerrarSessao: this.encerrarSessao,
     };
 
-    return <AuthProvider value={contexto}>{this.props.children}</AuthProvider>;
+    return(
+      <AuthProvider value={contexto} >
+          {this.props.children}
+      </AuthProvider>
+  )
   }
 }
 

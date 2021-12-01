@@ -45,8 +45,6 @@ function Rotas (props) {
 
 export default () => (
   <AuthConsumer>
-    {(context) => (
-      <Rotas isCoordenadorAutenticado={context.isCoordenadorAutenticado} />
-    )}
-  </AuthConsumer>
+        { (context) => (<Rotas isCoordenadorAutenticado={context.isAutenticado} />) }
+    </AuthConsumer>
 );

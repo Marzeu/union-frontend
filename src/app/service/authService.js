@@ -1,6 +1,5 @@
-import LocalStorageService from "./localstorageService";
-
 import jwt from "jsonwebtoken";
+import LocalStorageService from "./localstorageService";
 import ApiService from "../apiservice";
 
 export const COORDENADOR_LOGADO = "_coordenador_logado";
@@ -16,7 +15,7 @@ export default class AuthService {
     const decodedToken = jwt.decode(token);
     const expiration = decodedToken.exp
 
-    const isTokenInvalido = Date.now() >= expiration * 1000;
+    const isTokenInvalido = Date.now() >= (expiration * 1000);    
 
     return !isTokenInvalido;
   }
@@ -39,7 +38,7 @@ export default class AuthService {
   static refreshSession() {
     const token = LocalStorageService.obterItem(TOKEN);
     const coordenador = AuthService.obterCoordenadorAutenticado();
-    AuthService.logar(coordenador, token);    
+    AuthService.logar(coordenador, token);  
     return coordenador;
   }
 }
