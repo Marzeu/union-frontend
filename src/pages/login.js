@@ -30,11 +30,7 @@ class Login extends React.Component {
       .catch((err) => {
         mensagemErro(err.response.data);
       });
-  };
-
-  // prepareCadastrar = () => {
-  //   this.props.history.push("/cadastrar-usuario");
-  // };
+  };  
 
   render() {
     return (
