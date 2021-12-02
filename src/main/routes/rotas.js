@@ -5,6 +5,7 @@ import Login from "../../pages/login";
 import LandingPage from '../../pages/landingPage'
 import ConsultaFuncionarios from "../../pages/funcionarios/consulta-funcionarios";
 import CadastrarFuncionario from "../../pages/funcionarios/cadastrar-funcionario";
+import DetalhesFuncionario from "../../pages/funcionarios/detalhes-funcionario";
 import { AuthConsumer } from "../provedorAutenticacao";
 import { HashRouter } from "react-router-dom";
 
@@ -30,14 +31,10 @@ function Rotas (props) {
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={LandingPage} />  
+        <Route exact path="/detalhes/:id?" component={DetalhesFuncionario} />  
         <RotaAutenticada isCoordenadorAutenticado={props.isCoordenadorAutenticado} path="/home" component={Home} />
         <RotaAutenticada isCoordenadorAutenticado={props.isCoordenadorAutenticado} path="/consulta-funcionarios" component={ConsultaFuncionarios} />
-        <RotaAutenticada isCoordenadorAutenticado={props.isCoordenadorAutenticado} path="/cadastrar-funcionarios/:id?" component={CadastrarFuncionario} />
-
-
-        {/* <RotaAutenticada isCoordenadorAutenticado={props.isCoordenadorAutenticado} path="/home" component={Home} />
-        <RotaAutenticada isCoordenadorAutenticado={props.isCoordenadorAutenticado} path="/consulta-funcionarios" component={ConsultaFuncionarios} />
-        <RotaAutenticada isCoordenadorAutenticado={props.isCoordenadorAutenticado} path="/cadastrar-funcionarios/:id?" component={CadastrarFuncionario} /> */}
+        <RotaAutenticada isCoordenadorAutenticado={props.isCoordenadorAutenticado} path="/cadastrar-funcionarios/:id?" component={CadastrarFuncionario} />       
       </Switch>
     </HashRouter>
   );

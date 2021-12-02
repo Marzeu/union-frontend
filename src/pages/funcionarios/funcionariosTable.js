@@ -12,7 +12,7 @@ const FuncionariosTable = (props) => {
         <td>
           <button
             className="btn btn-info"
-            onClick={(e) => props.funcionarioDetalhes(funcionario.id)}
+            onClick={(e) => props.detalhes(funcionario.id)}
             type="button"
           >
             Detalhes

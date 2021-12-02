@@ -59,6 +59,11 @@ class ConsultaFuncionarios extends React.Component {
     
   };
 
+  detalhes = (id) => {
+    console.log(id);
+    this.props.history.push(`/detalhes/${id}`);
+  }
+
   confirmarApagar = (funcionario) => {
     Swal.fire({
       title: "Você tem certeza que deseja apagar esse funcionário?",
@@ -104,11 +109,7 @@ class ConsultaFuncionarios extends React.Component {
 
   preparaFormularioCadastro = () => {
     this.props.history.push("/cadastrar-funcionarios");
-  };
-
-  funcionarioDetalhes = (id) => {
-    this.props.history.push(`/detalhes/${id}`);
-  }
+  }; 
 
   render() {
     const cargo = [
@@ -205,7 +206,7 @@ class ConsultaFuncionarios extends React.Component {
                 funcionarios={this.state.funcionarios}
                 deletar={this.confirmarApagar}
                 editar={this.editar}
-                detalhes={this.funcionarioDetalhes}
+                detalhes={this.detalhes}
               />
             </div>
           </div>

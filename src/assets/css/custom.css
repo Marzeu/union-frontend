@@ -305,12 +305,30 @@ pre {
   margin-top: 5px;
 }
 
-td{
+td {
   text-align: center;
   vertical-align: middle;
 }
 
-th{
+th {
   text-align: center;
   vertical-align: middle;
+}
+
+.card-foto {
+  float: center;
+  display: flex;  
+}
+.card-foto .foto {
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  margin: 0 auto;  
+  max-width: 20rem;
+}
+.card-detalhes {
+  max-width: 22rem;
+  margin: auto;
+  width: auto;
+  height: auto;
 }
