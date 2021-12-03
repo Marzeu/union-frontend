@@ -315,9 +315,24 @@ th {
   vertical-align: middle;
 }
 
+.card-header{
+  border-width: thin;
+  border-style: solid;
+  border-color:lightgrey;
+  border-bottom: none;
+  border-radius: 5px 5px 0px 0px;
+  background-color: rgba(0, 0, 0, 0.1);   
+}
+
 .card-foto {
+  border-width: thin;
+  border-style: solid;
+  border-color:lightgrey;
+  border-bottom: none; 
+  border-top: none; 
   float: center;
-  display: flex;  
+  display: flex; 
+  background-color: rgba(0, 0, 0, 0.1);   
 }
 .card-foto .foto {
   justify-content: center;
@@ -325,10 +340,20 @@ th {
   left: 0;
   margin: 0 auto;  
   max-width: 20rem;
+  border-radius: 5px;
 }
 .card-detalhes {
   max-width: 22rem;
   margin: auto;
   width: auto;
   height: auto;
+}
+
+.card-footer {
+  border-width: thin;
+  border-style: solid;
+  border-color:lightgrey;
+  border-top: none;
+  background-color: rgba(0, 0, 0, 0.1); 
+  border-radius: 0px 0px 5px 5px;  
 }

@@ -5,9 +5,8 @@ const FuncionariosTable = (props) => {
     return (
       <tr key={funcionario.id}>
         <td>{funcionario.nome}</td>
-        <td>{funcionario.cpf}</td>
-        <td>{funcionario.cep}</td>
-        <td>{funcionario.telefone}</td>
+        <td>{funcionario.cpf}</td>        
+        {funcionario.foto ? (<td>Sim</td>) : (<td>Não</td>)}
         <td>{funcionario.coordenador.nome}</td>
         <td>
           <button
@@ -17,7 +16,6 @@ const FuncionariosTable = (props) => {
           >
             Detalhes
           </button>
-
           <button
             type="button"
             title="Editar"
@@ -44,9 +42,8 @@ const FuncionariosTable = (props) => {
       <thead>
         <tr>
           <th scope="col">Nome</th>
-          <th scope="col">Cpf</th>
-          <th scope="col">Cep</th>
-          <th scope="col">Telefone</th>
+          <th scope="col">Cpf</th>          
+          <th scope="col">Foto</th>
           <th scope="col">Coordenador</th>
           <th scope="col">Ações</th>
         </tr>

@@ -19,15 +19,7 @@ export default class FuncionarioService extends ApiService {
 
     if (funcionarioFiltro.cpf) {
       params = `${params}&cpf=${funcionarioFiltro.cpf}`;
-    }
-
-    if (funcionarioFiltro.cep) {
-      params = `${params}&cep=${funcionarioFiltro.cep}`;
-    }
-
-    if (funcionarioFiltro.telefone) {
-      params = `${params}&telefone=${funcionarioFiltro.telefone}`;
-    }
+    }   
 
     if (funcionarioFiltro.coordenador) {
       params = `${params}&coordenador=${funcionarioFiltro.coordenador}`;
@@ -60,16 +52,7 @@ export default class FuncionarioService extends ApiService {
     }
     if (!funcionario.cpf) {
       erros.push("Informe o CPF.");
-    }
-    if (!funcionario.cep) {
-      erros.push("Informe o CEP.");
-    }
-    if (!funcionario.telefone) {
-      erros.push("Informe o Telefone.");
-    }
-    if (!funcionario.nome) {
-      erros.push("Informe o Nome.");
-    }
+    }  
     if (!funcionario.coordenador) {
       erros.push("Informe o Coordenador.");
     }

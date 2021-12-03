@@ -11,8 +11,7 @@ class CadastrarFuncionarios extends React.Component {
     id: null,
     nome: "",
     cpf: "",
-    cep: "",
-    telefone: "",
+    foto: "",    
     coordenador: "",
     atualizando: false,
   };
@@ -41,12 +40,11 @@ class CadastrarFuncionarios extends React.Component {
       "_coordenador_logado"
     );
 
-    const { nome, cpf, cep, telefone, id, coordenador } = this.state;
+    const { nome, cpf, foto, id, coordenador } = this.state;
     const funcionario = {
       nome,
-      cpf,
-      cep,
-      telefone,
+      cpf,     
+      foto,
       id,
       coordenador,
     };
@@ -67,12 +65,11 @@ class CadastrarFuncionarios extends React.Component {
       "_coordenador_logado"
     );
 
-    const { nome, cpf, cep, telefone } = this.state;
+    const { nome, cpf, foto } = this.state;
     const funcionario = {
       nome,
       cpf,
-      cep,
-      telefone,
+      foto,      
       coordenador: coordenadorLogado.id,
     };
 
@@ -125,24 +122,22 @@ class CadastrarFuncionarios extends React.Component {
             </FormGroup>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-6">
-            <FormGroup id="inputTelefone" type="text" label="Telefone: ">
+        <div className="row">   
+        <div className="col-md-6">
+            <FormGroup id="inputCpf" type="text" label="CPF: ">
               <input
-                id="inputTelefone"
-                // type="text"
+                id="inputCpf"                
                 className="form-control"
-                name="telefone"
-                value={this.state.telefone}
+                name="cpf"
+                value={this.state.cpf}
                 onChange={this.handleChange}
               />
             </FormGroup>
-          </div>
+          </div>      
           <div className="col-md-6">
             <FormGroup id="inputCoordenador" type="text" label="Coordenador: ">
               <input
-                id="inputCoordenador"
-                // type="text"
+                id="inputCoordenador"               
                 className="form-control"
                 name="coordenador"
                 value={this.state.coordenador}
@@ -151,27 +146,14 @@ class CadastrarFuncionarios extends React.Component {
             </FormGroup>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md-6">
-            <FormGroup id="inputCpf" type="text" label="CPF: ">
+        <div className="row">          
+          <div className="col-md-12">
+            <FormGroup id="inputFoto" type="text" label="Foto: ">
               <input
-                id="inputCpf"
-                //type="text"
+                id="inputFoto"                
                 className="form-control"
-                name="cpf"
-                value={this.state.cpf}
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-          </div>
-          <div className="col-md-6">
-            <FormGroup id="inputCep" type="text" label="CEP: ">
-              <input
-                id="inputCep"
-                // type="text"
-                className="form-control"
-                name="cep"
-                value={this.state.cep}
+                name="foto"
+                value={this.state.foto}
                 onChange={this.handleChange}
               />
             </FormGroup>

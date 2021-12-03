@@ -2,21 +2,18 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import Card from "../../components/card";
 import FormGroup from "../../components/form-group";
-import SelecMenu from "../selectMenu";
 import FuncionariosTable from "./funcionariosTable";
 import FuncionarioService from "../../app/service/funcioarioService";
-import LocalStorageService from "../../app/service/localstorageService";
 import * as messages from "../../components/toastr";
 import Swal from "sweetalert2";
+import LocalStorageService from "../../app/service/localstorageService";
 
 class ConsultaFuncionarios extends React.Component {
   state = {
     nome: "",
     cpf: "",
-    cep: "",
-    telefone: "",
-    coordenador: "",
-    //cargo: "",
+    foto: "",    
+    coordenador: "",   
     funcionarioApagar: {},
     funcionarios: [],
   };
@@ -34,10 +31,7 @@ class ConsultaFuncionarios extends React.Component {
     const funcionarioFiltro = {
       nome: this.state.nome,
       cpf: this.state.cpf,
-      cep: this.state.cep,
-      telefone: this.state.telefone,
-      //coordenador: coordenador.id,
-      //cargo: this.state.cargo,
+      foto: this.state.foto, 
     };
 
     this.funcionarioService
@@ -55,12 +49,10 @@ class ConsultaFuncionarios extends React.Component {
   };
 
   editar = (id) => {
-    this.props.history.push(`/cadastrar-funcionarios/${id}`);
-    
+    this.props.history.push(`/cadastrar-funcionarios/${id}`);    
   };
 
-  detalhes = (id) => {
-    console.log(id);
+  detalhes = (id) => {    
     this.props.history.push(`/detalhes/${id}`);
   }
 
@@ -111,13 +103,7 @@ class ConsultaFuncionarios extends React.Component {
     this.props.history.push("/cadastrar-funcionarios");
   }; 
 
-  render() {
-    const cargo = [
-      { label: "Selecione...", value: "" },
-      { label: "Agente de Saúde", value: 1 },
-      { label: "Agente Sanitário", value: 2 },
-    ];
-
+  render() {   
     return (
       <Card title="Consulta Funcionários">
         <div className="row">
@@ -142,27 +128,7 @@ class ConsultaFuncionarios extends React.Component {
                   onChange={(e) => this.setState({ cpf: e.target.value })}
                   placeholder="Digite o CPF"
                 />
-              </FormGroup>
-              <FormGroup htmlFor="inputCep" label="CEP: ">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputCep"
-                  value={this.state.cep}
-                  onChange={(e) => this.setState({ cep: e.target.value })}
-                  placeholder="Digite o CEP"
-                />
-              </FormGroup>
-              <FormGroup htmlFor="inputTelefone" label="Telefone: ">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="inputTelefone"
-                  value={this.state.telefone}
-                  onChange={(e) => this.setState({ telefone: e.target.value })}
-                  placeholder="Digite o Telefone"
-                />
-              </FormGroup>
+              </FormGroup>              
               <FormGroup htmlFor="inputCoordenador" label="Coordenador: ">
                 <input
                   type="text"
@@ -174,25 +140,19 @@ class ConsultaFuncionarios extends React.Component {
                   }
                   placeholder="Digite o Coordenador"
                 />
-              </FormGroup>
-              <FormGroup htmlFor="inputCargo" label="Cargo: ">
-                <SelecMenu className="form-control" lista={cargo} />
-              </FormGroup>
-
+              </FormGroup>  
               <button
                 style={{ width: "150px" }}
                 onClick={this.buscar}
                 className="btn btn-success"
-              >
-                <i className="pi pi-sign-in"></i>
+              >                
                 <span className="text-btn">Buscar</span>
               </button>
               <button
                 style={{ width: "150px" }}
                 onClick={this.preparaFormularioCadastro}
                 className="btn btn-primary"
-              >
-                <i className="pi pi-plus"></i>
+              >               
                 <span className="text-btn">Cadastrar</span>
               </button>
             </div>

@@ -30,7 +30,7 @@ class Login extends React.Component {
       .catch((err) => {
         mensagemErro(err.response.data);
       });
-  };  
+  };
 
   render() {
     return (
@@ -42,48 +42,41 @@ class Login extends React.Component {
                 <div className="col-lg-12">
                   <div className="bs-component">
                     <fieldset>
-                      <FormGroup label="Email: *" htmlfor="inputEmail">
-                        <input
-                          type="email"
-                          value={this.state.email}
-                          onChange={(e) =>
-                            this.setState({ email: e.target.value })
-                          }
-                          className="form-control"
-                          id="inputEmail"
-                          aria-describedby="emailHelp"
-                          placeholder="Digite o E-mail"
-                        />
-                      </FormGroup>
-                      <FormGroup label="Senha: *" htmlfor="inputPassword">
-                        <input
-                          type="password"
-                          value={this.state.senha}
-                          onChange={(e) =>
-                            this.setState({ senha: e.target.value })
-                          }
-                          className="form-control"
-                          id="inputPassword"
-                          aria-describedby="emailHelp"
-                          placeholder="Digite a Senha"
-                        />
-                      </FormGroup>
-                      <button
-                        style={{ width: "150px" }}
-                        onClick={this.entrar}
-                        className="btn btn-success"
-                      >
-                        <i className="pi pi-sign-in"></i>
-                        <span className="text-btn">Entrar</span>
-                      </button>
-                      {/* <button
-                        style={{ width: "150px" }}
-                        onClick={this.prepareCadastrar}
-                        className="btn btn-primary"
-                      >
-                        <i className="pi pi-plus"></i>
-                        <span className="text-btn">Cadastrar</span>
-                      </button> */}
+                      <div class="form-group">
+                        <div className="form-floating mb-3">
+                          <input
+                            type="email"
+                            className="form-control"
+                            id="floatingInput"
+                            placeholder="name@example.com"
+                            value={this.state.email}
+                            onChange={(e) =>
+                              this.setState({ email: e.target.value })
+                            }
+                          />
+                          <label for="floatingInput">E-mail: *</label>
+                        </div>
+                        <div className="form-floating">
+                          <input
+                            type="password"
+                            className="form-control"
+                            id="floatingPassword"
+                            placeholder="Password"
+                            value={this.state.senha}
+                            onChange={(e) =>
+                              this.setState({ senha: e.target.value })
+                            }
+                          />
+                          <label for="floatingPassword">Senha: *</label>
+                        </div>
+                        <button
+                          style={{ width: "150px" }}
+                          onClick={this.entrar}
+                          className="btn btn-success"
+                        >
+                          <span className="text-btn">Entrar</span>
+                        </button>
+                      </div>
                     </fieldset>
                   </div>
                 </div>

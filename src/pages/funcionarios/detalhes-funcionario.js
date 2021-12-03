@@ -8,10 +8,8 @@ class DetalhesFuncionario extends React.Component {
     id: null,
     nome: "",
     cpf: "",
-    cep: "",
-    telefone: "",
-    coordenador: "",
-    atualizando: false,
+    foto: "",
+    coordenador: "",    
   };
 
   constructor() {
@@ -39,10 +37,10 @@ class DetalhesFuncionario extends React.Component {
         <div className="card-detalhes ">
           <h3 className="card-header">Funcionário</h3>
           <div className="card-foto">
-            {/* <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTggauC9GzZ20cDt94Nzm2-z-qvmi9Jrh1JK-6n1HG-derBaewvGMJTsHMcw8ndDX7Fjqc&usqp=CAU"
+            <img alt="foto"
+              src={this.state.foto}
               className="foto"
-            /> */}
+            />
           </div>
           <div className="card-footer text-muted">
             <div className="card-body">
@@ -52,7 +50,9 @@ class DetalhesFuncionario extends React.Component {
               </h6>
             </div>
           </div>
-        </div>
+          <br></br>
+          <br></br>
+        </div>    
       </>
     );
   }
